@@ -9,7 +9,7 @@ const detailReducer = (state = initialState, action) => {
       return {
         ...state,
         game: action.payload.game,
-        score: action.payload.screen
+        screen: action.payload.screen
       };
     default:
       return { ...state };
