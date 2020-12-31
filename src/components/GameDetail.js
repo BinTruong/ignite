@@ -9,6 +9,14 @@ import { useHistory } from "react-router-dom";
 //Components
 import { smallImage } from "../util";
 
+//Icons
+import playstation from "../img/playstation.svg";
+import steam from "../img/steam.svg";
+import xbox from "../img/xbox.svg";
+import nintendo from "../img/nintendo.svg";
+import apple from "../img/apple.svg";
+import gamepad from "../img/gamepad.svg";
+
 const GameDetail = ({ pathId }) => {
   const history = useHistory();
   //Exit Detail
@@ -17,6 +25,34 @@ const GameDetail = ({ pathId }) => {
     if (element.classList.contains("shadow")) {
       document.body.style.overflow = "auto";
       history.push("/");
+    }
+  };
+
+  //Get Platform Icons
+  const getPlatform = (platform) => {
+    switch (platform) {
+      case "PlayStation 2":
+        return playstation;
+      case "PlayStation 3":
+        return playstation;
+      case "PlayStation 4":
+        return playstation;
+      case "PlayStation 5":
+        return playstation;
+      case "Xbox One":
+        return xbox;
+      case "Xbox Series S":
+        return xbox;
+      case "Xbox 360":
+        return xbox;
+      case "PC":
+        return steam;
+      case "Nintendo Switch":
+        return nintendo;
+      case "iOS":
+        return apple;
+      default:
+        return gamepad;
     }
   };
 
@@ -36,7 +72,11 @@ const GameDetail = ({ pathId }) => {
                 <h3>Platforms</h3>
                 <Platform>
                   {game.platforms.map((data) => (
-                    <h3 key={data.platform.id}>{data.platform.name}</h3>
+                    <img
+                      key={data.platform.id}
+                      src={getPlatform(data.platform.name)}
+                      alt={game.name}
+                    />
                   ))}
                 </Platform>
               </Info>
